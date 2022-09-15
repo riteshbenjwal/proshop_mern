@@ -1,9 +1,17 @@
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import dotenv from "dotenv";
 import cors from "cors";
 import colors from "colors";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDb from "./config/db.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
 
 dotenv.config();
 const app = express();
@@ -15,13 +23,20 @@ app.use(
 );
 connectDb();
 
+app.use(express.static(path.join(__dirname, ".", "public")));
+
 //Product routes
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
- 
+
+app.get("/*", (req, res) => {
+  console.log(__dirname);
+  res.sendFile(path.join(__dirname, ".", "public", "index.html"));
+});
+
 app.use(notFound);
 
 app.use(errorHandler);
