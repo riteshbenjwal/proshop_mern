@@ -6,8 +6,9 @@ const Footer = () => {
         <footer>
           <Container>
             <Row>
-              <Col className='text-center py-3'>Copyright &copy; Proshop</Col>
+              <Col className='text-center py-1'>Application image: <a href="https://hub.docker.com/u/riteshbenjwal">Docker Hub,</a> Copyright &copy; Proshop</Col>
             </Row>
+           
           </Container> 
         </footer>
     )
