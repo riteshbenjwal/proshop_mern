@@ -5,7 +5,7 @@ import {
   productDetailsReducer,
 } from "./reducers/productReducers";
 
-import { orderCreateReducer,orderDetailsReducer, orderPayReducer } from "./reducers/orderReducer";
+import { orderCreateReducer,orderDetailsReducer, orderPayReducer, orderListMyReducer} from "./reducers/orderReducer";
 
 import { userLoginReducer , userRegisterReducer, userDetailsReducer, userUpdateProfileReducer} from "./reducers/userReducers";
 
@@ -44,6 +44,7 @@ const store = configureStore({
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
+    orderListMy: orderListMyReducer
   },
   preloadedState: initialState,
   middleware: middleware,
